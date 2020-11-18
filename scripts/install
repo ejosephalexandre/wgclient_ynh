@@ -92,11 +92,11 @@ ynh_script_progression --message="Installing dependencies..." --time --weight=1
 
 arch=$(ynh_detect_arch)
 
-#if [ $arch -eq "x86_64" ]; then
+if [ $arch == "x86_64" ]; then
 	ynh_install_extra_app_dependencies --repo="http://deb.debian.org/debian buster-backports main" --package="$pkg_dependencies"
-#else 
+else 
 	ynh_install_app_dependencies $pkg_dependencies
-#fi
+fi
 
 #=================================================
 # CREATE A MYSQL DATABASE
@@ -116,12 +116,12 @@ arch=$(ynh_detect_arch)
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring nginx web server..." --time --weight=1
+#ynh_script_progression --message="Configuring nginx web server..." --time --weight=1
 
 ### `ynh_add_nginx_config` will use the file conf/nginx.conf
 
 # Create a dedicated nginx config
-ynh_add_nginx_config
+#ynh_add_nginx_config
 
 #=================================================
 # CREATE DEDICATED USER
@@ -131,7 +131,7 @@ ynh_add_nginx_config
 #=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring php-fpm..." --time --weight=1
+#ynh_script_progression --message="Configuring php-fpm..." --time --weight=1
 
 ### `ynh_add_fpm_config` is used to set up a PHP config.
 ### You can remove it if your app doesn't use PHP.
@@ -145,7 +145,7 @@ ynh_script_progression --message="Configuring php-fpm..." --time --weight=1
 ###		- And the section "PHP-FPM CONFIGURATION" in the upgrade script
 
 # Create a dedicated php-fpm config
-ynh_add_fpm_config
+#ynh_add_fpm_config
 
 #=================================================
 # SPECIFIC SETUP
