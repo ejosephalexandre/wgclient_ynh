@@ -92,11 +92,11 @@ ynh_script_progression --message="Installing dependencies..." --time --weight=1
 
 arch=$(ynh_detect_arch)
 
-if [ $arch -eq "x86_64" ]; then
+#if [ $arch -eq "x86_64" ]; then
 	ynh_install_extra_app_dependencies --repo="http://deb.debian.org/debian buster-backports main" --package="$pkg_dependencies"
-else 
+#else 
 	ynh_install_app_dependencies $pkg_dependencies
-fi
+#fi
 
 #=================================================
 # CREATE A MYSQL DATABASE
