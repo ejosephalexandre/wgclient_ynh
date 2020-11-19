@@ -27,6 +27,7 @@ ynh_detect_arch(){
 	local architecture
 	if [ -n "$(uname -m | grep arm64)" ] || [ -n "$(uname -m | grep aarch64)" ]; then
 		architecture="arm64"
+		pkg_dependencies="$pkg_dependencies dkms linux-image-4.19.0-11-arm64 linux-image-arm64 wireguard wireguard-dkms"
 	elif [ -n "$(uname -m | grep x86_64)" ] || [ -n "$(uname -m | grep amd64)" ]; then
 		architecture="amd64"
 	elif [ -n "$(uname -m | grep 86)" ]; then
@@ -36,7 +37,7 @@ ynh_detect_arch(){
 	else
 		architecture="unknown"
 	fi
-	echo $architecture
+	#echo $architecture
 }
 
 
