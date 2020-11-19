@@ -24,7 +24,7 @@ pkg_dependencies="wireguard "
 # Requires YunoHost version 2.2.4 or higher.
 
 ynh_detect_arch(){
-	local arch
+	#local arch
 	if [ -n "$(uname -m | grep arm64)" ] || [ -n "$(uname -m | grep aarch64)" ]; then
 		arch="arm64"
 		pkg_dependencies="$pkg_dependencies dkms linux-image-4.19.0-11-arm64 linux-image-arm64 wireguard wireguard-dkms"
