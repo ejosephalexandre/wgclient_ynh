@@ -90,11 +90,14 @@ ynh_script_progression --message="Installing dependencies..." --time --weight=1
 ###		- As well as the section "REINSTALL DEPENDENCIES" in the restore script
 ###		- And the section "UPGRADE DEPENDENCIES" in the upgrade script
 
-arch=$(ynh_detect_arch)
+ynh_detect_arch
 
 if [ $arch == "amd64" ]
 then
 	ynh_install_extra_app_dependencies --repo="http://deb.debian.org/debian buster-backports main" --package="$pkg_dependencies"
+elif [ $arch == "arm64" ]
+then
+	ynh_install_extra_app_dependencies --repo="http://deb.debian.org/debian buster-backports main contrib" --package="$pkg_dependencies"
 else 
 	ynh_install_app_dependencies $pkg_dependencies
 fi
